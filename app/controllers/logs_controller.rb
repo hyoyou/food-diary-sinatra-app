@@ -34,4 +34,28 @@ class LogsController < ApplicationController
       redirect to '/login'
     end
   end
+
+  get '/logs/:id/edit' do
+    if logged_in? && current_user
+      @log = Log.find(params[:id])
+      erb :'/logs/edit_log'
+    else
+      redirect '/login'
+    end
+  end
+
+  patch '/logs/:id' do
+    @log = Log.find(params[:id])
+    if params[:date] != ""
+      @log.date = params[:date]
+      @log.save
+      redirect to "/logs/#{@log.id}"
+    else
+      redirect to "/logs/#{@log.id}/edit"
+    end
+  end
+
+  delete '/logs/:id/delete' do
+
+  end
 end
