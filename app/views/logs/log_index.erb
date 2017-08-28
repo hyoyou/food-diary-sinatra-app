@@ -2,6 +2,6 @@
 
 <% Log.all.each do |log| %>
   <ul>
-    <li><%= log.date %></li>
+    <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
   </ul>
 <% end %>
