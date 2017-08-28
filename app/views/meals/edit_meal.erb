@@ -1,0 +1,14 @@
+<h1>Edit a Meal</h1>
+
+<form action="/meals/<%= @meals.id %>" method="POST">
+  <label>Name(s) of Food: </label>
+  <input type="text" name="name" value="<%= @meals.name %>">
+  <br>
+
+  <label>Total Calories: </label>
+  <input type="number" name="calories" value="<%= @meals.calories %>">
+  <br>
+
+  <input type="submit" value="Edit Meal">
+
+</form>

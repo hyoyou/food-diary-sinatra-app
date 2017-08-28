@@ -26,4 +26,15 @@ class MealsController < ApplicationController
       redirect to '/meals/new'
     end
   end
+
+  get "/meals/:id" do
+    @meal = Meal.find(params[:id])
+    if current_user
+      erb :'meals/show_meal'
+    else
+      redirect '/login'
+    end
+  end
+
+
 end

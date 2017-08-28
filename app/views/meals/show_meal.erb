@@ -1,0 +1,15 @@
+<h1>Meal</h1>
+
+<label>Name(s) of Food: <%= @meal.name %></label>
+<br>
+
+<label>Total Calories: <%= @meal.calories %></label>
+<br>
+
+<form action="/meals/<%= @meal.id %>/edit" method="GET">
+  <input type="submit" value="Edit Meal">
+</form>
+
+<form action="/meals/<%= @meal.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Meal">
