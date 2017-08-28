@@ -1,4 +1,4 @@
-<h1>Add a Meal</h1>
+<h2>Add a Meal</h2>
 
 <form action='/meals' method="POST">
   <label>Name(s) of Food: </label>
@@ -11,9 +11,9 @@
 
   <label>Select Log Date: </label>
   <%Log.all.each do |log|%>
-    <input type="radio" name="log_id" id="<%= log.date %>" value="<%=log.id%>"><%=log.date%></input>
+    <input type="radio" name="log_id" id="<%= log.date %>" value="<%=log.id%>"> <%=log.date%></input>
   <%end%>
-  <br>
+  <br><br>
 
   <input type="submit" value="Add New Entry">
 

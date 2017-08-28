@@ -1,5 +1,3 @@
-require 'pry'
-
 class LogsController < ApplicationController
   get '/logs' do
     if logged_in? && current_user

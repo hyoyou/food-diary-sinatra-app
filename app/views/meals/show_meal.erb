@@ -1,10 +1,16 @@
-<h1>Meal</h1>
+<h2>Meal</h2>
 
 <label>Name(s) of Food: <%= @meal.name %></label>
 <br>
 
 <label>Total Calories: <%= @meal.calories %></label>
-<br>
+<br><br>
+
+<label>Eaten on:
+    <% @log = Log.find(@meal.log_id) %>
+    <a href="/logs/<%= @log.id %>"><%= @log.date %></a>
+</label>
+<br><br>
 
 <form action="/meals/<%= @meal.id %>/edit" method="GET">
   <input type="submit" value="Edit Meal">
@@ -13,3 +19,6 @@
 <form action="/meals/<%= @meal.id %>/delete" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Meal">
+
+<br><br>
+<h5><a href="/meals">Back</a></h5>

@@ -1,8 +1,10 @@
-<h1>Welcome, <%= @user.email %></h1>
+<h2>Welcome, <%= @user.email %></h2>
+<h3>A list of your recent meals:</h3>
 
 <% Meal.all.each do |meal| %>
   <ul>
-    <li><%= meal.name %></li>
-    <li><%= meal.calories %></li>
+    <li>Name: <a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
+    <li>Calories: <%= meal.calories %></li>
+    <br>
   </ul>
 <% end %>

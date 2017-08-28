@@ -30,6 +30,7 @@ class MealsController < ApplicationController
   get '/meals/:id' do
     @meal = Meal.find(params[:id])
     if current_user
+      binding.pry
       erb :'meals/show_meal'
     else
       redirect '/login'
