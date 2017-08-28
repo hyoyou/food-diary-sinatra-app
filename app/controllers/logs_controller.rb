@@ -1,6 +1,12 @@
 class LogsController < ApplicationController
   get '/logs' do
-    erb :'logs/log_index'
+    if logged_in? && current_user
+      @user = current_user
+      @log = Log.all
+      erb :'logs/log_index'
+    else
+      redirect to '/login'
+    end
   end
 
   get '/log/new' do
@@ -19,5 +25,5 @@ class LogsController < ApplicationController
       redirect to '/log/new'
     end
   end
-  
+
 end

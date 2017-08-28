@@ -1,0 +1,7 @@
+<h1>Welcome, <%= @user.email %></h1>
+
+<% Log.all.each do |log| %>
+  <ul>
+    <li><%= log.date %></li>
+  </ul>
+<% end %>

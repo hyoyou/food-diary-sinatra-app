@@ -1,0 +1,8 @@
+<h1>Welcome, <%= @user.email %></h1>
+
+<% Meal.all.each do |meal| %>
+  <ul>
+    <li><%= meal.name %></li>
+    <li><%= meal.calories %></li>
+  </ul>
+<% end %>

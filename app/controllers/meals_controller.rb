@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
 
   get '/meals' do
-    if logged_in && current_user
+    if logged_in? && current_user
       @user = current_user
       @meals = Meal.all
       erb :'/meals/meal_index'
