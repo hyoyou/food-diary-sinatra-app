@@ -5,8 +5,6 @@ class CreateMeals < ActiveRecord::Migration
       t.integer :calories
       t.integer :user_id
       t.integer :log_id
-
-      t.timestamps null: false
     end
   end
 end
