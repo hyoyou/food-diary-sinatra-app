@@ -1,0 +1,14 @@
+<h1>Your Log</h1>
+
+<label>Date: </label>
+  <%= @log.date %>
+  <br><br>
+
+<form action="/logs/<%= @log.id %>/edit" method="GET">
+  <input type="submit" value="Edit Log">
+</form>
+
+<form action="/logs/<%= @log.id %>/delete" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Log">
+</form>

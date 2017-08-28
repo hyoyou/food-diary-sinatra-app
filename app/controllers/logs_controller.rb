@@ -26,4 +26,12 @@ class LogsController < ApplicationController
     end
   end
 
+  get '/logs/:id' do
+    @log = Log.find(params[:id])
+    if current_user
+      erb :'logs/show_log'
+    else
+      redirect to '/login'
+    end
+  end
 end
