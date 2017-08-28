@@ -1,4 +1,6 @@
 <h2>Meal</h2>
+<h5><a href="/meals">Back</a></h5>
+<br><br>
 
 <label>Name(s) of Food: <%= @meal.name %></label>
 <br>
@@ -19,6 +21,10 @@
 <form action="/meals/<%= @meal.id %>/delete" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Meal">
+</form>
 
-<br><br>
-<h5><a href="/meals">Back</a></h5>
+<form align="right" action='/logout' name="logout" method="GET">
+  <label class="logoutLblPos">
+  <input name="submit2" type="submit" id="submit2" value="Log Out">
+  </label>
+</form>

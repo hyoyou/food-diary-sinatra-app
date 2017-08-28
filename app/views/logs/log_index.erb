@@ -5,3 +5,9 @@
     <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
   </ul>
 <% end %>
+
+<form align="right" action='/logout' name="logout" method="GET">
+  <label class="logoutLblPos">
+  <input name="submit2" type="submit" id="submit2" value="Log Out">
+  </label>
+</form>

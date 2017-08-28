@@ -81,6 +81,13 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  .logoutLblPos {
+
+   position:fixed;
+   right:80px;
+   top:30px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -111,5 +118,12 @@
   h2 {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .logoutLblPos {
+
+   position:fixed;
+   right:10px;
+   top:5px;
   }
 }

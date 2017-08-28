@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if params[:email] != "" && params[:password] != ""
       @user = User.create(:email => params[:email], :password => params[:password])
       session[:id] = @user.id
-      redirect to ('/log/new')
+      redirect to ('/logs/new')
     else
       redirect to ('/signup')
     end
