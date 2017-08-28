@@ -2,7 +2,14 @@
 
 <label>Date: </label>
   <%= @log.date %>
-  <br><br>
+<br><br>
+
+<label>Meals for this Date: </label>
+  <% @log.meals.all.each do |meal| %>
+    <%= meal.name %>
+  <% end %>
+
+<br><br>
 
 <form action="/logs/<%= @log.id %>/edit" method="GET">
   <input type="submit" value="Edit Log">

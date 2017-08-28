@@ -9,6 +9,12 @@
   <input type="number" name="calories">
   <br>
 
+  <label>Select Log Date: </label>
+  <%Log.all.each do |log|%>
+    <input type="radio" name="log_id" id="<%= log.date %>" value="<%=log.id%>"><%=log.date%></input>
+  <%end%>
+  <br>
+
   <input type="submit" value="Add New Entry">
 
 </form>
