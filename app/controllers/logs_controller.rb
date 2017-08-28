@@ -61,9 +61,14 @@ class LogsController < ApplicationController
     @log = Log.find(params[:id])
     if @log.user == current_user
       @meal = Meal.find_by(:log_id => params[:id])
-      @meal.destroy
-      @log.destroy
-      redirect '/logs'
+      if @meal.present?
+        @meal.destroy
+        @log.destroy
+        redirect '/logs'
+      else
+        @log.destroy
+        redirect '/logs'
+      end
     else
       redirect '/login'
     end

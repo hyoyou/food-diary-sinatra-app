@@ -6,9 +6,10 @@
 
 <label>Meals for this Date: </label>
   <% @log.meals.all.each do |meal| %>
-    <%= meal.name %>
+    <ul>
+      <li><a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
+    </ul>
   <% end %>
-
 <br><br>
 
 <form action="/logs/<%= @log.id %>/edit" method="GET">
