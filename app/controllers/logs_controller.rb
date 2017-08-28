@@ -56,6 +56,12 @@ class LogsController < ApplicationController
   end
 
   delete '/logs/:id/delete' do
-
+    @log = Log.find(params[:id])
+    if @log.user == current_user
+      @log.destroy
+      redirect '/logs'
+    else
+      redirect '/login'
+    end
   end
 end
