@@ -27,7 +27,7 @@ class MealsController < ApplicationController
     end
   end
 
-  get "/meals/:id" do
+  get '/meals/:id' do
     @meal = Meal.find(params[:id])
     if current_user
       erb :'meals/show_meal'
@@ -36,5 +36,26 @@ class MealsController < ApplicationController
     end
   end
 
+  get '/meals/:id/edit' do
+    @meal = Meal.find(params[:id])
+    if @meal.user == current_user
+      erb :'/meals/edit_meal'
+    else
+      redirect '/login'
+    end
+  end
+
+  patch '/meals/:id' do
+    @meal = Meal.find(params[:id])
+    if params[:name] != "" && params[:caloires] != ""
+      @meal.update(:name => params[:name], :calories => params[:calories])
+      @meal.save
+      redirect "/meals/#{@meal.id}"
+    else
+      redirect "/meals/#{@meal.id}/edit"
+    end
+  end
+
+  end
 
 end
