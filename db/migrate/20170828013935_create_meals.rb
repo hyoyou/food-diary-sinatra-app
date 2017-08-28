@@ -3,6 +3,8 @@ class CreateMeals < ActiveRecord::Migration
     create_table :meals do |t|
       t.string :name
       t.integer :calories
+      t.integer :user_id
+      t.integer :log_id
 
       t.timestamps null: false
     end
