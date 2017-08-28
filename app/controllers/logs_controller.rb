@@ -11,7 +11,7 @@ class LogsController < ApplicationController
     end
   end
 
-  get '/log/new' do
+  get '/logs/new' do
     if current_user
       erb :'logs/new_log'
     else
@@ -24,7 +24,7 @@ class LogsController < ApplicationController
       current_user.logs.create(:date => params[:date])
       redirect to '/meals/new'
     else
-      redirect to '/log/new'
+      redirect to '/logs/new'
     end
   end
 

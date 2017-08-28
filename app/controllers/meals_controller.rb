@@ -21,7 +21,7 @@ class MealsController < ApplicationController
   post '/meals' do
     if params[:name] != "" && params[:calories] != ""
       @meal = current_user.meals.create(:name => params[:name], :calories => params[:calories], :log_id => params[:log_id])
-      redirect to '/meals'
+      redirect to "/logs/#{@meal.log_id}"
     else
       redirect to '/meals/new'
     end
