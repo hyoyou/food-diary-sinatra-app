@@ -4,6 +4,12 @@
 
 <br><br>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+
+<br>
+
 <form action='/login' method="POST">
   <label>Email: </label>
   <input type="email" name="email">

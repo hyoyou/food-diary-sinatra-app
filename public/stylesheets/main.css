@@ -89,10 +89,18 @@
   }
 
   .logoutLblPos {
-    position:fixed;
-    right:80px;
-    top:30px;
+    position: fixed;
+    right: 80px;
+    top: 30px;
   }
+
+  /*.flash {
+    float: left;
+    width: 60%;
+    font-weight: bold;
+    background: #2a7242;
+    color: #fff;
+  }*/
 }
 
 @media screen and (max-width: 600px) {
