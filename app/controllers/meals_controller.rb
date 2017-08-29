@@ -23,6 +23,7 @@ class MealsController < ApplicationController
       @meal = current_user.meals.create(:name => params[:name], :calories => params[:calories], :log_id => params[:log_id])
       redirect to "/logs/#{@meal.log_id}"
     else
+      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect to '/meals/new'
     end
   end
