@@ -55,8 +55,10 @@ class MealsController < ApplicationController
     if params[:name] != "" && params[:calories] != ""
       @meal.update(:name => params[:name], :calories => params[:calories])
       @meal.save
+      flash[:notice] = "Successfully Updated Meal!"
       redirect "/meals/#{@meal.id}"
     else
+      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect "/meals/#{@meal.id}/edit"
     end
   end

@@ -2,6 +2,11 @@
 
 <h2>Edit a Meal</h2>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+<br>
+
 <form action="/meals/<%= @meal.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <label>Name(s) of Food: </label>

@@ -5,6 +5,11 @@
 <h5><a href="/meals">Back to Meals</a></h5>
 <br><br>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+<br><br>
+
 <label>Name(s) of Food: <%= @meal.name %></label>
 <br>
 
