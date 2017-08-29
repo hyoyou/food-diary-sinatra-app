@@ -5,6 +5,11 @@
 <h5><a href="/logs">Back to Logs</a></h5>
 <br><br>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+<br><br>
+
 <h3>A list of your recent meals:</h3>
 <% Meal.all.each do |meal| %>
   <% if @user.meals.include?(meal) %>

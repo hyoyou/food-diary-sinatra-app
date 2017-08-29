@@ -67,6 +67,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     if @meal.user == current_user
       @meal.destroy
+      flash[:notice] = "Successfully Deleted Meal!"
       redirect '/meals'
     else
       flash[:notice] = "Please Log In First!"
