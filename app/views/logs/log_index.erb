@@ -3,9 +3,11 @@
 <h3>A list of your recent logs:</h3>
 
 <% Log.all.each do |log| %>
-  <ul>
-    <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
-  </ul>
+  <% if @user.logs.include?(log) %>
+    <ul>
+      <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
+    </ul>
+  <% end %>
 <% end %>
 <br>
 

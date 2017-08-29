@@ -5,13 +5,14 @@
 <br><br>
 
 <h3>A list of your recent meals:</h3>
-
 <% Meal.all.each do |meal| %>
-  <ul>
-    <li>Name: <a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
-    <li>Calories: <%= meal.calories %></li>
-    <br>
-  </ul>
+  <% if @user.meals.include?(meal) %>
+    <ul>
+      <li>Name: <a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
+      <li>Calories: <%= meal.calories %></li>
+      <br>
+    </ul>
+  <% end %>
 <% end %>
 <br>
 
