@@ -16,6 +16,14 @@
   <% end %>
 <br><br>
 
+<label>Total Calories for This Day:</label>
+  <% @total_cal = 0 %>
+  <% @log.meals.all.each do |meal| %>
+    <% @total_cal = @total_cal + meal.calories %>
+  <% end %>
+  <%= @total_cal %> Calories
+<br><br>
+
 <form action="/logs/<%= @log.id %>/edit" method="GET">
   <input type="submit" value="Edit Log">
 </form>
