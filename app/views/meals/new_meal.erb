@@ -1,4 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
+
 <h2>Add a Meal</h2>
 
 <form action='/meals' method="POST">
@@ -12,7 +13,9 @@
 
   <label>Select Log Date: </label>
   <%Log.all.each do |log|%>
-    <input type="radio" name="log_id" id="<%= log.date %>" value="<%=log.id%>"> <%=log.date%></input>
+    <% if current_user.logs.include?(log) %>
+      <input type="radio" name="log_id" id="<%= log.date %>" value="<%=log.id%>"> <%=log.date%></input>
+    <% end %>
   <%end%>
   <br><br>
 
