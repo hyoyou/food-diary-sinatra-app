@@ -22,6 +22,7 @@ class LogsController < ApplicationController
       current_user.logs.create(:date => params[:date])
       redirect to '/meals/new'
     else
+      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect to '/logs/new'
     end
   end

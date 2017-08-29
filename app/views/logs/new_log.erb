@@ -2,6 +2,11 @@
 
 <h2>Add an Entry</h2>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+<br><br>
+
 <form action='/logs' method="POST">
   <label>Date: </label>
   <input type="text" name="date">
