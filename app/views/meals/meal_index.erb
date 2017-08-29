@@ -1,5 +1,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
 <h2>Welcome, <%= @user.email %></h2>
+
+<h5><a href="/logs">Back to Logs</a></h5>
+<br><br>
+
 <h3>A list of your recent meals:</h3>
 
 <% Meal.all.each do |meal| %>
