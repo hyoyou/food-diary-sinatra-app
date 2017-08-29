@@ -8,7 +8,7 @@ Specs:
 - [x] Include user accounts
 - [x] Ensure that users can't modify content created by other users (Edit and Delete actions protected through helper methods)
 - [x] Include user input validations (Checks that Sign Up Form is not blank, as well as New Log Form and New Meal Form)
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
+- [x] Display validation failures to user with error message (Use validates_presence_of to check credentials, Use Sinatra-Flash for error messages)
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
