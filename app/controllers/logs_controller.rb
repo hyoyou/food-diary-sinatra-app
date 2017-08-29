@@ -5,6 +5,7 @@ class LogsController < ApplicationController
       @log = Log.all
       erb :'logs/log_index'
     else
+      flash[:notice] = "Please Log In First!"
       redirect to '/login'
     end
   end
@@ -13,6 +14,7 @@ class LogsController < ApplicationController
     if current_user
       erb :'logs/new_log'
     else
+      flash[:notice] = "Please Log In First!"
       redirect to '/login'
     end
   end
@@ -32,6 +34,7 @@ class LogsController < ApplicationController
     if current_user
       erb :'logs/show_log'
     else
+      flash[:notice] = "Please Log In First!"
       redirect to '/login'
     end
   end
@@ -41,6 +44,7 @@ class LogsController < ApplicationController
       @log = Log.find(params[:id])
       erb :'/logs/edit_log'
     else
+      flash[:notice] = "Please Log In First!"
       redirect '/login'
     end
   end
@@ -73,6 +77,7 @@ class LogsController < ApplicationController
         redirect '/logs'
       end
     else
+      flash[:notice] = "Please Log In First!"
       redirect '/login'
     end
   end
