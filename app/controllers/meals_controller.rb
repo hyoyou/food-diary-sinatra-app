@@ -6,6 +6,7 @@ class MealsController < ApplicationController
       @meals = Meal.all
       erb :'/meals/meal_index'
     else
+      flash[:notice] = "Please Log In First!"
       redirect to '/login'
     end
   end
@@ -14,6 +15,7 @@ class MealsController < ApplicationController
     if current_user
       erb :'/meals/new_meal'
     else
+      flash[:notice] = "Please Log In First!"
       redirect to '/login'
     end
   end
@@ -33,6 +35,7 @@ class MealsController < ApplicationController
     if current_user
       erb :'meals/show_meal'
     else
+      flash[:notice] = "Please Log In First!"
       redirect '/login'
     end
   end
@@ -42,6 +45,7 @@ class MealsController < ApplicationController
     if @meal.user == current_user
       erb :'/meals/edit_meal'
     else
+      flash[:notice] = "Please Log In First!"
       redirect '/login'
     end
   end
@@ -63,6 +67,7 @@ class MealsController < ApplicationController
       @meal.destroy
       redirect '/meals'
     else
+      flash[:notice] = "Please Log In First!"
       redirect '/login'
     end
   end
