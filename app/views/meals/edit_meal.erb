@@ -2,9 +2,7 @@
 
 <h2>Edit a Meal</h2>
 
-<div class='flash'>
-  <%= flash[:notice] %>
-</div>
+<%= flash[:notice] %>
 <br>
 
 <form action="/meals/<%= @meal.id %>" method="POST">

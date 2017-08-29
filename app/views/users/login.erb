@@ -2,12 +2,8 @@
 
 <h1>Welcome Back! Please Log In</h1>
 
-<br><br>
-
-<div class='flash'>
-  <%= flash[:notice] %>
-</div>
-
+<br>
+<%= flash[:notice] %>
 <br>
 
 <form action='/login' method="POST">

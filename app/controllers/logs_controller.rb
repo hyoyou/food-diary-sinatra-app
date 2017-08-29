@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+
   get '/logs' do
     if logged_in? && current_user
       @user = current_user
@@ -81,4 +82,5 @@ class LogsController < ApplicationController
       redirect '/login'
     end
   end
+  
 end
