@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       redirect to ('/logs/new')
     else
+      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect to ('/signup')
     end
   end
