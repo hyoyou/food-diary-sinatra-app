@@ -49,8 +49,10 @@ class LogsController < ApplicationController
     if params[:date] != ""
       @log.date = params[:date]
       @log.save
+      flash[:notice] = "Successfully Updated Log!"
       redirect to "/logs/#{@log.id}"
     else
+      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect to "/logs/#{@log.id}/edit"
     end
   end
