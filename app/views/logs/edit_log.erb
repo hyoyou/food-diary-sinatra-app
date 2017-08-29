@@ -2,6 +2,11 @@
 
 <h2>Edit an Entry</h2>
 
+<div class='flash'>
+  <%= flash[:notice] %>
+</div>
+<br>
+
 <form action="/logs/<%= @log.id %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   <label>Date: </label>
