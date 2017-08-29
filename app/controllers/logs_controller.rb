@@ -64,9 +64,11 @@ class LogsController < ApplicationController
       if @meal.present?
         @meal.destroy
         @log.destroy
+        flash[:notice] = "Successfully Deleted Log!"
         redirect '/logs'
       else
         @log.destroy
+        flash[:notice] = "Successfully Deleted Log!"
         redirect '/logs'
       end
     else
