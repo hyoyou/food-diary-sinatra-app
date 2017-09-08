@@ -32,20 +32,20 @@ class LogsController < ApplicationController
 
   get '/logs/:id' do
     @log = Log.find(params[:id])
-    if current_user
+    if current_user && @log.user_id == current_user.id
       erb :'logs/show_log'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This log does not belong to the current user. Please check your log in information."
       redirect to '/login'
     end
   end
 
   get '/logs/:id/edit' do
-    if logged_in? && current_user
+    if current_user && @log.user_id == current_user.id
       @log = Log.find(params[:id])
       erb :'/logs/edit_log'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This log does not belong to the current user. Please check your log in information."
       redirect '/login'
     end
   end
@@ -65,7 +65,7 @@ class LogsController < ApplicationController
 
   delete '/logs/:id/delete' do
     @log = Log.find(params[:id])
-    if @log.user == current_user
+    if current_user && @log.user_id == current_user.id
       @meal = Meal.find_by(:log_id => params[:id])
       if @meal.present?
         @meal.destroy
@@ -78,9 +78,9 @@ class LogsController < ApplicationController
         redirect '/logs'
       end
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This log does not belong to the current user. Please check your log in information."
       redirect '/login'
     end
   end
-  
+
 end
