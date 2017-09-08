@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if params[:email] != "" && params[:password] != "" && !User.find_by(email: params[:email])
       @user = User.create(:email => params[:email], :password => params[:password])
       session[:user_id] = @user.id
-      redirect to ('/logs/new')
+      redirect to ('/logs')
     else
       flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
       redirect to ('/signup')
