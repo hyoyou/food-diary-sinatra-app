@@ -1,5 +1,9 @@
 class MealsController < ApplicationController
 
+  #the meal belongs to the current user
+
+  #for GET meals/:id, meals/:id/edit , PATCH meals/:id, DELETE meals/
+
   get '/meals' do
     if logged_in? && current_user
       @user = current_user
@@ -32,20 +36,20 @@ class MealsController < ApplicationController
 
   get '/meals/:id' do
     @meal = Meal.find(params[:id])
-    if current_user
+    if current_user && @meal.user_id == current_user.id
       erb :'meals/show_meal'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
       redirect '/login'
     end
   end
 
   get '/meals/:id/edit' do
     @meal = Meal.find(params[:id])
-    if @meal.user == current_user
+    if current_user && @meal.user_id == current_user.id
       erb :'/meals/edit_meal'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
       redirect '/login'
     end
   end
@@ -65,14 +69,14 @@ class MealsController < ApplicationController
 
   delete '/meals/:id/delete' do
     @meal = Meal.find(params[:id])
-    if @meal.user == current_user
+    if current_user && @meal.user_id == current_user.id
       @meal.destroy
       flash[:notice] = "Successfully Deleted Meal!"
       redirect '/meals'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
       redirect '/login'
     end
   end
-  
+
 end
