@@ -1,11 +1,7 @@
 class MealsController < ApplicationController
 
-  #the meal belongs to the current user
-
-  #for GET meals/:id, meals/:id/edit , PATCH meals/:id, DELETE meals/
-
   get '/meals' do
-    if logged_in? && current_user
+    if logged_in?
       @user = current_user
       @meals = Meal.all
       erb :'/meals/meal_index'
@@ -40,7 +36,7 @@ class MealsController < ApplicationController
       erb :'meals/show_meal'
     else
       flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
-      redirect '/login'
+      redirect '/meals'
     end
   end
 
@@ -50,7 +46,7 @@ class MealsController < ApplicationController
       erb :'/meals/edit_meal'
     else
       flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
-      redirect '/login'
+      redirect '/meals'
     end
   end
 
@@ -75,7 +71,7 @@ class MealsController < ApplicationController
       redirect '/meals'
     else
       flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
-      redirect '/login'
+      redirect '/meals'
     end
   end
 
