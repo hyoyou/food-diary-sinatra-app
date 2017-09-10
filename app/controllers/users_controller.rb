@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to ('/logs')
     else
-      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
+      flash[:notice] = "Please make sure form was filled out correctly!"
       redirect to ('/signup')
     end
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect '/logs'
     else
-      flash[:notice] = "Please Check Log In Credentials."
+      flash[:notice] = "Please check log in credentials."
       redirect to ('/login')
     end
   end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   get '/logout' do
     if logged_in?
       session.clear
-      flash[:notice] = "Successfully Logged Out!"
+      flash[:notice] = "Successfully logged out!"
       redirect to ('/login')
     else
       redirect '/'

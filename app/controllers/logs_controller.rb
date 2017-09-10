@@ -6,7 +6,7 @@ class LogsController < ApplicationController
       @log = Log.all
       erb :'logs/log_index'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "Please log in first!"
       redirect to '/login'
     end
   end
@@ -15,7 +15,7 @@ class LogsController < ApplicationController
     if current_user
       erb :'logs/new_log'
     else
-      flash[:notice] = "Please Log In First!"
+      flash[:notice] = "Please log in first!"
       redirect to '/login'
     end
   end
@@ -25,14 +25,14 @@ class LogsController < ApplicationController
       current_user.logs.create(:date => params[:date])
       redirect to '/meals/new'
     else
-      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
+      flash[:notice] = "Please make sure form was filled out correctly!"
       redirect to '/logs/new'
     end
   end
 
   get '/logs/:id' do
     @log = Log.find(params[:id])
-    if current_user && @log.user_id == current_user.id
+    if logged_in? && @log.user_id == current_user.id
       erb :'logs/show_log'
     else
       flash[:notice] = "This log does not belong to the current user. Please check your log in information."
@@ -41,7 +41,7 @@ class LogsController < ApplicationController
   end
 
   get '/logs/:id/edit' do
-    if current_user && @log.user_id == current_user.id
+    if logged_in? && @log.user_id == current_user.id
       @log = Log.find(params[:id])
       erb :'/logs/edit_log'
     else
@@ -55,26 +55,26 @@ class LogsController < ApplicationController
     if params[:date] != ""
       @log.date = params[:date]
       @log.save
-      flash[:notice] = "Successfully Updated Log!"
+      flash[:notice] = "Successfully updated log!"
       redirect to "/logs/#{@log.id}"
     else
-      flash[:notice] = "Please Make Sure Form Was Filled Out Correctly!"
+      flash[:notice] = "Please make sure form was filled out correctly!"
       redirect to "/logs/#{@log.id}/edit"
     end
   end
 
   delete '/logs/:id/delete' do
     @log = Log.find(params[:id])
-    if current_user && @log.user_id == current_user.id
+    if logged_in? && @log.user_id == current_user.id
       @meal = Meal.find_by(:log_id => params[:id])
       if @meal.present?
         @meal.destroy
         @log.destroy
-        flash[:notice] = "Successfully Deleted Log!"
+        flash[:notice] = "Successfully deleted log!"
         redirect '/logs'
       else
         @log.destroy
-        flash[:notice] = "Successfully Deleted Log!"
+        flash[:notice] = "Successfully deleted log!"
         redirect '/logs'
       end
     else
