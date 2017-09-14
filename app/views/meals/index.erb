@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
 
-<h2>Welcome, <%= @user.email %></h2>
+<h2>Welcome, <%= current_user.email %></h2>
 
 <h5><a href="/logs">Back to Logs</a></h5>
 <br><br>
@@ -9,14 +9,12 @@
 <br><br>
 
 <h3>A list of your recent meals:</h3>
-<% Meal.all.each do |meal| %>
-  <% if @user.meals.include?(meal) %>
-    <ul>
-      <li>Name: <a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
-      <li>Calories: <%= meal.calories %></li>
-      <br>
-    </ul>
-  <% end %>
+<% current_user.meals.each do |meal| %>
+  <ul>
+    <li>Name: <a href="/meals/<%= meal.id %>"><%= meal.name %></a></li>
+    <li>Calories: <%= meal.calories %></li>
+    <br>
+  </ul>
 <% end %>
 <br>
 

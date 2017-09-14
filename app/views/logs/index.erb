@@ -1,19 +1,17 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
 
-<h2>Welcome, <%= @user.email %></h2>
+<h2>Welcome, <%= current_user.email %></h2>
 
 <%= flash[:notice] %>
 <br><br>
 
 <h3>A list of your recent logs:</h3>
 
-<% Log.all.each do |log| %>
-  <% if @user.logs.include?(log) %>
-    <ul>
-      <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
-      <br>
-    </ul>
-  <% end %>
+<% current_user.logs.each do |log| %>
+  <ul>
+    <li><a href="/logs/<%= log.id %>"><%= log.date %></a></li>
+    <br>
+  </ul>
 <% end %>
 <br>
 

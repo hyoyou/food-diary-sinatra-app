@@ -2,9 +2,7 @@ class MealsController < ApplicationController
 
   get '/meals' do
     if logged_in?
-      @user = current_user
-      @meals = Meal.all
-      erb :'/meals/meal_index'
+      erb :'/meals/index'
     else
       flash[:notice] = "Please log in first!"
       redirect to '/login'
@@ -33,7 +31,7 @@ class MealsController < ApplicationController
   get '/meals/:id' do
     @meal = Meal.find(params[:id])
     if logged_in? && @meal.user_id == current_user.id
-      erb :'meals/show_meal'
+      erb :'meals/show'
     else
       flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
       redirect '/meals'
@@ -43,7 +41,7 @@ class MealsController < ApplicationController
   get '/meals/:id/edit' do
     @meal = Meal.find(params[:id])
     if logged_in? && @meal.user_id == current_user.id
-      erb :'/meals/edit_meal'
+      erb :'/meals/edit'
     else
       flash[:notice] = "This meal does not belong to the current user. Please check your log in information."
       redirect '/meals'

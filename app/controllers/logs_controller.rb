@@ -2,9 +2,7 @@ class LogsController < ApplicationController
 
   get '/logs' do
     if logged_in?
-      @user = current_user
-      @log = Log.all
-      erb :'logs/log_index'
+      erb :'logs/index'
     else
       flash[:notice] = "Please log in first!"
       redirect to '/login'
@@ -13,7 +11,7 @@ class LogsController < ApplicationController
 
   get '/logs/new' do
     if logged_in?
-      erb :'logs/new_log'
+      erb :'logs/new'
     else
       flash[:notice] = "Please log in first!"
       redirect to '/login'
@@ -33,7 +31,7 @@ class LogsController < ApplicationController
   get '/logs/:id' do
     @log = Log.find(params[:id])
     if logged_in? && @log.user_id == current_user.id
-      erb :'logs/show_log'
+      erb :'logs/show'
     else
       flash[:notice] = "This log does not belong to the current user. Please check your log in information."
       redirect to '/logs'
@@ -43,7 +41,7 @@ class LogsController < ApplicationController
   get '/logs/:id/edit' do
     @log = Log.find(params[:id])
     if logged_in? && @log.user_id == current_user.id
-      erb :'/logs/edit_log'
+      erb :'/logs/edit'
     else
       flash[:notice] = "This log does not belong to the current user. Please check your log in information."
       redirect '/logs'
