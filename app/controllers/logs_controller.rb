@@ -41,8 +41,8 @@ class LogsController < ApplicationController
   end
 
   get '/logs/:id/edit' do
+    @log = Log.find(params[:id])
     if logged_in? && @log.user_id == current_user.id
-      @log = Log.find(params[:id])
       erb :'/logs/edit_log'
     else
       flash[:notice] = "This log does not belong to the current user. Please check your log in information."
