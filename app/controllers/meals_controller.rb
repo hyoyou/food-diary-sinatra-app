@@ -12,7 +12,7 @@ class MealsController < ApplicationController
   end
 
   get '/meals/new' do
-    if current_user
+    if logged_in?
       erb :'/meals/new_meal'
     else
       flash[:notice] = "Please log in first!"

@@ -12,7 +12,7 @@ class LogsController < ApplicationController
   end
 
   get '/logs/new' do
-    if current_user
+    if logged_in?
       erb :'logs/new_log'
     else
       flash[:notice] = "Please log in first!"
